@@ -5,7 +5,7 @@
   "main": "server/app.js",
   "scripts": {
     "build-server": "tsc",
-    "build-web": "cd www && ng build",
+    "build-web": "cd www && ng build --prod",
     "watch-ts": "tsc -w",
     "start": "node server/app"
   },

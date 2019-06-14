@@ -26,7 +26,7 @@ export class AccountComponent {
 
   constructor(private fb: FormBuilder,
     private api: ApiService,
-    private user: UserService,
+    public user: UserService,
     private router: Router,
     private route: ActivatedRoute,
     private snackBar: MatSnackBar

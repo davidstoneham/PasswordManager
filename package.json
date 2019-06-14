@@ -4,7 +4,8 @@
   "description": "",
   "main": "server/app.js",
   "scripts": {
-    "build": "tsc && cd www && ng build",
+    "build-server": "tsc",
+    "build-web": "cd www && ng build",
     "watch-ts": "tsc -w",
     "start": "node server/app"
   },

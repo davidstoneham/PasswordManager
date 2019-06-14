@@ -51,5 +51,4 @@ server/engine/**/*.js
 server/*.js
 ecosystem.json
 yarn.lock
-server/app
 www/package-lock.json

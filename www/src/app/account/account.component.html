@@ -1,0 +1,54 @@
+<form [formGroup]="accountForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>{{isEditing?'Edit Account':'Create Account'}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Name" formControlName="name">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Login" formControlName="login">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Password" formControlName="password">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Description" formControlName="description">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          Access
+          <ng-container formArrayName="access">
+            <div *ngFor="let user of user.allUsers; let i = index">
+              <mat-checkbox [value]="user._id" [formControlName]="i">
+                {{user.username}}
+              </mat-checkbox>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+      <a mat-raised-button type="button" routerLink="/">Cancel</a>
+    </mat-card-actions>
+  </mat-card>
+</form>

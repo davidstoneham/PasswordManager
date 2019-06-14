@@ -1,0 +1,43 @@
+<div class="grid-container">
+  <h1 class="mat-h1">
+    Dashboard
+
+    <button *ngIf="user.profile" mat-flat-button [matMenuTriggerFor]="menu" color="primary"
+      style="float: right">{{user.profile.username}}</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="logout()">Logout</button>
+    </mat-menu>
+  </h1>
+
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let account of user.accounts">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{account.name}}
+        </mat-panel-title>
+        <mat-panel-description>
+          {{account.login}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <p *ngIf="account.description">{{account.description}}</p>
+      <p *ngIf="account.tmpPassword">password: {{account.tmpPassword}}</p>
+      <p *ngIf="!account.tmpPassword">
+        <button mat-raised-button color="primary" (click)="getPassword(account)">
+          Get Password
+        </button>
+      </p>
+      <a *ngIf="canEdit(account)" mat-raised-button [routerLink]="['/editAccount',account._id]">
+        Edit
+      </a>
+
+    </mat-expansion-panel>
+
+  </mat-accordion>
+
+  <a mat-fab color="primary" style="position: fixed;right: 10px; bottom: 10px;" routerLink="/addAccount">
+    <mat-icon aria-hidden="false" aria-label="add">add</mat-icon>
+  </a>
+
+
+</div>

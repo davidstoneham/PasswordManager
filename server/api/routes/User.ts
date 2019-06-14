@@ -4,6 +4,7 @@ import * as easyPass from '@tanepiper/easypass-2';
 import middleware from '../middleware';
 import errorHandler from '../services/errorHandler';
 import * as bCryptAsync from '../services/bCryptAsync';
+import rateLimiter from '../services/RateLimiter';
 
 export async function login(req, res) {
     try {
@@ -153,24 +154,25 @@ export const routes = [
         path: "login",
         method: "post",
         fn: login,
-        middleware: []
+        middleware: [rateLimiter]
     },
     {
         path: "create",
         method: "post",
         fn: create,
-        middleware: []
+        middleware: [rateLimiter]
     },
     {
         path: "requestReset/:email",
         method: "get",
         fn: requestReset,
-        middleware: []
+        middleware: [rateLimiter]
     },
     {
         path: "resetPassword",
         method: "post",
         fn: resetPassword,
+        middleware: [rateLimiter]
     },
     {
         path: "current",
